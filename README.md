@@ -68,8 +68,8 @@ cp .env.example .env
 
 Заполните ваши параметры:
 ```env
-BOT_TOKEN=8495300603:AAFd6C8pFNWHC65BwE_sc5D6nVk8lofIuow
-ADMIN_ID=8596737895
+BOT_TOKEN=849...................
+ADMIN_ID=8596............
 
 BUSINESS_ADDRESS=г. Киев, ул. Центральная, 10
 BUSINESS_PHONE=+380 99 123 45 67
