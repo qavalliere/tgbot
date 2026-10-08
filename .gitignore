@@ -1,0 +1,22 @@
+# Конфиденциальные данные
+.env
+
+# Зависимости Node.js
+node_modules/
+
+# Виртуальное окружение Python
+venv/
+.venv/
+env/
+
+# Кэш Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE и редакторы
+.idea/
+.vscode/
+
+# Логи
+*.log
