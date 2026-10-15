@@ -6,6 +6,7 @@ from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
 
 import config
+import database
 from handlers import start_router, info_router, application_router
 
 # Настройка логирования
@@ -21,9 +22,12 @@ logger = logging.getLogger(__name__)
 
 async def main() -> None:
     """
-    Точка входа: инициализация и запуск Telegram-бота в режиме Long Polling.
+    Точка входа: инициализация БД и запуск Telegram-бота в режиме Long Polling.
     """
     logger.info("Запуск Telegram-бота...")
+
+    # Инициализация базы данных SQLite
+    await database.init_db()
 
     # Инициализация бота и диспетчера
     bot = Bot(token=config.BOT_TOKEN)

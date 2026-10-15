@@ -1,4 +1,10 @@
-from aiogram.types import KeyboardButton, ReplyKeyboardMarkup, InlineKeyboardMarkup, InlineKeyboardButton
+from aiogram.types import (
+    KeyboardButton,
+    ReplyKeyboardMarkup,
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+)
+import config
 
 
 def get_main_keyboard() -> ReplyKeyboardMarkup:
@@ -61,12 +67,24 @@ def get_phone_keyboard() -> ReplyKeyboardMarkup:
 def get_services_choice_keyboard() -> ReplyKeyboardMarkup:
     """
     Клавиатура для выбора услуги при оформлении заявки.
+    Динамически формируется из списка config.SERVICES.
     """
-    keyboard = [
-        [KeyboardButton(text="💇 Стрижка"), KeyboardButton(text="💅 Маникюр")],
-        [KeyboardButton(text="💄 Макияж"), KeyboardButton(text="Другая услуга")],
-        [KeyboardButton(text="❌ Отменить")],
-    ]
+    keyboard: list[list[KeyboardButton]] = []
+
+    # Размещаем услуги по 2 кнопки в ряд
+    row: list[KeyboardButton] = []
+    for service_name, _ in config.SERVICES:
+        row.append(KeyboardButton(text=service_name))
+        if len(row) == 2:
+            keyboard.append(row)
+            row = []
+    if row:
+        keyboard.append(row)
+
+    # Дополнительные опции
+    keyboard.append([KeyboardButton(text="Другая услуга")])
+    keyboard.append([KeyboardButton(text="❌ Отменить")])
+
     return ReplyKeyboardMarkup(
         keyboard=keyboard,
         resize_keyboard=True,
@@ -88,7 +106,7 @@ def get_confirmation_keyboard() -> ReplyKeyboardMarkup:
     )
 
 
-def get_admin_decision_keyboard(lead_id: str) -> InlineKeyboardMarkup:
+def get_admin_decision_keyboard(lead_id: int | str) -> InlineKeyboardMarkup:
     """
     Инлайн-кнопки для владельца бизнеса (подтвердить или отклонить заявку).
     """

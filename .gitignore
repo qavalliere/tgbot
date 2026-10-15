@@ -1,6 +1,11 @@
 # Конфиденциальные данные
 .env
 
+# База данных SQLite и данные
+*.db
+*.sqlite3
+data/
+
 # Зависимости Node.js
 node_modules/
 
