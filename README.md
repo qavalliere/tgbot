@@ -2,7 +2,9 @@
 
 Готовый и надежный Telegram-бот для малого бизнеса (салоны красоты, барбершопы, мастерские, консультации, клиники и др.).
 
-Поддерживает запуск как на **Python 3.12+ (aiogram 3.x)**, так и на **Node.js (Telegraf 4.x)**.
+Работает на **Python 3.12+ (aiogram 3.x)**.
+
+> ⚡ **Ищете версию на Node.js (Telegraf 4.x)?** Она доступна в ветке [`node-js`](https://github.com/qavalliere/tgbot/tree/node-js).
 
 ---
 
@@ -36,22 +38,20 @@
 ```text
 tgbot/
 ├── bot.py                  # Главный файл запуска на Python (aiogram 3.x)
-├── bot.js                  # Версия на Node.js (Telegraf 4.x)
-├── package.json            # Зависимости Node.js
-├── config.py               # Загрузка настроек и контактов (Python)
-├── handlers/               # Обработчики сообщений и FSM (Python)
+├── config.py               # Загрузка настроек и контактов
+├── handlers/               # Обработчики сообщений и FSM
 │   ├── __init__.py
-│   ├── start.py            # /start и меню
+│   ├── start.py            # /start и главное меню
 │   ├── application.py      # FSM заявки и админские кнопки
 │   └── info.py             # Услуги и контакты
-├── keyboards/              # Клавиатуры (Python)
+├── keyboards/              # Клавиатуры и разметка кнопок
 │   ├── __init__.py
 │   └── keyboards.py
-├── states/                 # Состояния FSM (Python)
+├── states/                 # Состояния FSM
 │   ├── __init__.py
 │   └── application.py
 ├── .env.example            # Шаблон настроек
-├── .gitignore              # Исключения для Git (скрывает .env и зависимости)
+├── .gitignore              # Исключения для Git (скрывает .env и venv)
 ├── requirements.txt        # Зависимости Python
 └── README.md
 ```
@@ -78,20 +78,7 @@ BUSINESS_SCHEDULE=Пн-Сб: 09:00 - 20:00, Вс: 10:00 - 18:00
 
 ---
 
-## ▶️ Вариант 1: Запуск на Node.js
-
-1. Установите зависимости:
-   ```bash
-   npm install
-   ```
-2. Запустите бота:
-   ```bash
-   node bot.js
-   ```
-
----
-
-## ▶️ Вариант 2: Запуск на Python
+## ▶️ Запуск бота
 
 1. Создайте и активируйте виртуальное окружение:
    ```bash
